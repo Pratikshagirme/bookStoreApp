@@ -1,0 +1,93 @@
+[
+    {
+        "id":1,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":2,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+       
+    {
+        "id":3,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+        
+    },
+    {
+        "id":4,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":5,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":6,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":7,
+        "name":"Story Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":0,
+        "category": "Free",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":8,
+        "name":"Food Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":200,
+        "category": "Food",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":9,
+        "name":"Music Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":100,
+        "category": "Song",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":10,
+        "name":"Sports Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":50,
+        "category": "Sports",
+        "image":"/book1.jpg"
+    },
+    {
+        "id":11,
+         "name":"Comedy Book",
+        "title": "Lorem, ipsum dolor sit amet consecteture adipiscing elit.",
+        "price":20,
+        "category": "Enternimaent",
+        "image":"/book1.jpg"
+    }
+    
+]
