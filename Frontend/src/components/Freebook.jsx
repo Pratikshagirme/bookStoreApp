@@ -1,16 +1,29 @@
-import React from "react";
-import list from "../data/list.json";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import axios from "axios";
 import Cards from "./Cards";
-
 import { Navigation, Pagination } from "swiper/modules";
 
 function Freebook() {
-  const filterData = list.filter((data) => data.category === "Free");
-  console.log(filterData);
+  const [book, setBook] = useState([]);
+  useEffect(() => {
+    const getBook = async () => {
+      try {
+        const res = await axios.get("http://localhost:4001/book");
+
+        const data = res.data.filter((data) => data.category === "Free");
+        console.log(data);
+        setBook(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getBook();
+  }, []);
+
   var settings = {
     dots: true,
     infinite: false,
@@ -57,28 +70,30 @@ function Freebook() {
             corporis nulla non suscipit, iure neque earum?
           </p>
         </div>
+
         <div className="mt-6 px-4 mb-20">
-      <Swiper
-        modules={[Pagination]}
-    spaceBetween={20}
-    pagination={{
-      el: ".custom-pagination",
-      clickable: true,
-    }}
-    breakpoints={{
-      640: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    }}
-      >
-        {filterData.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Cards item={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="custom-pagination mt-6 text-center"></div>
-    </div>
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={20}
+            pagination={{
+              el: ".custom-pagination",
+              clickable: true,
+            }}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+          >
+            {book.map((item) => (
+              <SwiperSlide key={item._id}>
+                <Cards item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="custom-pagination mt-6 text-center"></div>
+        </div>
       </div>
     </>
   );

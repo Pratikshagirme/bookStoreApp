@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
-function Cards({item}) {
+function Cards({ item }) {
   return (
     <div className="mt-4 my-3 p-3">
-      {/* ✅ FIXED */}
       <div className="card dark:bg-slate-800 dark:text-white shadow-xl rounded-xl hover:scale-105 duration-200 dark:border">
         <figure>
           <img src={item.image} alt="Shoes" />
@@ -27,7 +26,7 @@ function Cards({item}) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Cards;

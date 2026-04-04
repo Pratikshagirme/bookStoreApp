@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
+import Logout from "./Logout";
 
 function Navbar() {
+  const [authUser, setAuthUser] = useAuth();
+
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
- // 1. Ensure the theme is set on initial load
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     const element = document.documentElement;
@@ -17,9 +20,8 @@ function Navbar() {
       element.classList.remove("dark");
       element.setAttribute("data-theme", "light");
     }
-  }, []); // Empty dependency array = runs once on load
+  }, []);
 
-  // 2. This handles the actual toggle when you click the button
   useEffect(() => {
     const element = document.documentElement;
     if (theme === "dark") {
@@ -58,7 +60,6 @@ function Navbar() {
       </li>
       <li>
         <Link to="/contact">Contact</Link>
-        
       </li>
       <li>
         <a>About</a>
@@ -116,49 +117,58 @@ function Navbar() {
           </label>
         </div>
         <button
-  onClick={() => {
-    setTheme(theme === "light" ? "dark" : "light");
-  }}
-  className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition"
->
-  {/* Logic Reversed: Show Sun when LIGHT, Moon when DARK */}
-  {theme === "light" ? (
-    // ☀️ Sun Icon
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-6 h-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <circle cx="12" cy="12" r="5" />
-      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-    </svg>
-  ) : (
-    // 🌙 Moon Icon
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-6 h-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21 12.79A9 9 0 1111.21 3c.34 0 .67.02 1 .05A7 7 0 0021 12.79z"
-      />
-    </svg>
-  )}
-</button>
-        <a className="btn bg-black text-white px-3 py-1 rounded-md hover:g-slate-800 duration-300 cursor-pointer"
-        onClick={()=> 
-          document.getElementById("my_modal_3").showModal()}>
-          Login
-          </a>
-          <Login />
+          onClick={() => {
+            setTheme(theme === "light" ? "dark" : "light");
+          }}
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition"
+        >
+          {theme === "light" ? (
+            // sun icon
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+          ) : (
+            // moon icon
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 12.79A9 9 0 1111.21 3c.34 0 .67.02 1 .05A7 7 0 0021 12.79z"
+              />
+            </svg>
+          )}
+        </button>
+
+        {authUser ? (
+          <Logout />
+        ) : (
+          <>
+            <a
+              className="btn bg-black text-white px-3 py-1 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
+            >
+              Login
+            </a>
+            <Login />
+          </>
+        )}
       </div>
     </div>
   );

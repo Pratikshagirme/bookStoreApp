@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* This configures DaisyUI to allow light/dark mode */
+
 @theme {
   --daisy-themes: light, dark;
 }

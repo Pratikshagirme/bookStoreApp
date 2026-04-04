@@ -10,9 +10,9 @@ function Courses() {
     <>
       <Navbar />
       <div className="min-h-screen">
-        <Course/>
+        <Course />
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

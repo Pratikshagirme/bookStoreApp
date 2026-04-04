@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const {
@@ -8,12 +10,33 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-  mode: "onTouched", // This ensures errors only appear when the button is clicked
-});
+    mode: "onTouched", // This ensures errors only appear when the button is clicked
+  });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // You can manually close the modal here after successful data log
+  const onSubmit = async (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+    await axios
+      .post("http://localhost:4001/user/login", userInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          toast.success("Login successfull");
+          document.getElementById("my_modal_3").close();
+          setTimeout(() => {
+            window.location.reload();
+            localStorage.setItem("Users", JSON.stringify(res.data.user));
+          }, 3000);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Error" + err.response.data.message);
+        setTimeout(() => {}, 3000);
+      });
+
     document.getElementById("my_modal_3").close();
   };
   return (
@@ -21,7 +44,6 @@ function Login() {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box w-95 max-w-md border-[0.5px]">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <Link
               to="/"
               onClick={() => document.getElementById("my_modal_3").close()}
@@ -41,8 +63,12 @@ function Login() {
                dark:bg-slate-900 dark:text-white"
                 {...register("email", { required: true })}
               />
-              <br/>
-              {errors.email && <span className="text-sm text-red-500">This field is required</span>}
+              <br />
+              {errors.email && (
+                <span className="text-sm text-red-500">
+                  This field is required
+                </span>
+              )}
             </div>
             {/* password */}
             <div className="mt-4 space-y-2">
@@ -56,7 +82,11 @@ function Login() {
                 {...register("password", { required: true })}
               />
               <br />
-              {errors.password && <span className="text-sm text-red-500">This field is required</span>}
+              {errors.password && (
+                <span className="text-sm text-red-500">
+                  This field is required
+                </span>
+              )}
             </div>
             {/* Button */}
             <div className="flex justify-around mt-4">

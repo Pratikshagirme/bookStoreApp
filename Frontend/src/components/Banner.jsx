@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Banner() {
   return (
     <>
@@ -30,16 +29,15 @@ function Banner() {
               <input type="text" className="grow" placeholder="Email" />
             </label>
           </div>
-          <button className="btn btn-secondary mt-6">Secondary</button>
+          <button className="btn btn-secondary mt-6">Get Started </button>
         </div>
         <div className="order-1 w-full md:w-1/2 flex justify-center items-center">
-  <img 
-    src="/Banner1.png" 
-    alt="Banner" 
-    /* Remove dark:bg-slate-900 from here! */
-    className="w-full h-auto  transition-all duration-300"
-  />
-</div>
+          <img
+            src="/Banner1.png"
+            alt="Banner"
+            className="w-full h-auto  transition-all duration-300"
+          />
+        </div>
       </div>
     </>
   );
