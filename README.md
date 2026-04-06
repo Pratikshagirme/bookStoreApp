@@ -1,4 +1,4 @@
-Tech Stack: Node.js, Express.js, MongoDB, React.js, JavaScript (ES6+), HTML5, CSS3
+Tech Stack: Node.js, Express.js, MongoDB, React.js
 
 Full-Stack Development: Engineered a complete client-server web application to provide a simple and user-friendly platform for browsing and managing books. The project demonstrates integration between frontend and backend systems.
 
