@@ -20,7 +20,7 @@ const URI=process.env.MonogoDBURI;
 
 
 mongoose.connect(URI)
-  .then(() => console.log("Connected to MongoDB ✅"))
+  .then(() => console.log("Connected to MongoDB "))
   .catch((error) => console.log("Error:", error));
 
 
